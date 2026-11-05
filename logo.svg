@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Jalon">
+  <title>Jalon</title>
+  <rect width="120" height="120" rx="26" fill="#FFC21A"/>
+  <rect x="55" y="22" width="10" height="80" fill="#FFF8E6" stroke="#1A1814" stroke-width="3"/>
+  <rect x="55" y="38" width="10" height="13" fill="#1A1814"/>
+  <rect x="55" y="64" width="10" height="13" fill="#1A1814"/>
+  <rect x="55" y="89" width="10" height="13" fill="#1A1814"/>
+  <path d="M65 22 L96 32 L65 42 Z" fill="#1A1814"/>
+  <line x1="38" y1="104" x2="82" y2="104" stroke="#1A1814" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

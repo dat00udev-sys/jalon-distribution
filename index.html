@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jalon — Chaque étape jalonnée, rien d'oublié.</title>
+<meta name="description" content="Jalon by dat00u : l'application Android gratuite des artisans en électricité, plomberie et peinture. Pièces, tableau NF C 15-100, matériel, devis et suivi, sans rien oublier. Tout reste sur le téléphone.">
+<meta name="theme-color" content="#FFC21A">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* The app's own palette: site yellow, warm black, plaster white. */
+:root{--jaune:#FFC21A;--encre:#1A1814;--platre:#F6F6F2;--carte:#FFFFFF;--gris:#6B675D;--bord:#E2DFD5;
+  --bleu:#185FA5;--vert:#2E7D32;--orange:#C2410C}
+*{box-sizing:border-box}
+html{background:var(--platre)}
+body{margin:0;color:var(--encre);font:17px/1.55 Barlow,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--platre)}
+a{color:var(--encre)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.brand b{font-family:"Barlow Condensed",Barlow,sans-serif;letter-spacing:.2px}
+
+/* Top bar, black like the app's bottom bar. */
+.top{position:sticky;top:0;z-index:5;background:var(--encre)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand img{width:34px;height:34px}
+.brand b{font-size:24px}
+.brand small{color:#BDB8AA;font-size:13px}
+.nav{margin-left:auto;display:flex;gap:4px}
+.nav a{color:#E8E4D8;text-decoration:none;font-size:15px;padding:7px 12px;border-radius:999px}
+.nav a:hover,.nav a:focus-visible{background:rgba(255,255,255,.1);outline:none}
+.nav a.get{background:var(--jaune);color:var(--encre);font-weight:600}
+
+/* Hero on the yellow band, like a site sign. */
+.hero{background:var(--jaune)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:56px 20px 48px}
+.hero img.logo{width:96px;height:96px;border-radius:21px;box-shadow:0 0 0 3px var(--encre)}
+h1{font-size:76px;line-height:.95;margin:16px 0 8px}
+.slogan{font-size:24px;font-weight:600;margin:0 0 14px}
+.lead{font-size:19px;margin:0 0 24px;max-width:540px;color:#3A3527}
+.button{display:inline-flex;align-items:center;gap:12px;background:var(--encre);color:var(--jaune);text-decoration:none;font-weight:600;font-size:19px;
+  padding:15px 26px;border-radius:14px;transition:transform .15s}
+.button:hover,.button:focus-visible{transform:translateY(-1px);outline:3px solid var(--encre);outline-offset:3px}
+.button svg{width:22px;height:22px}
+.meta{font-size:15px;margin:14px 0 0;color:#3A3527}
+.phone{justify-self:center;width:min(300px,80%);border-radius:30px;border:8px solid var(--encre);overflow:hidden;background:var(--encre);box-shadow:0 24px 60px rgba(26,24,20,.35)}
+.phone img{display:block;width:100%}
+
+/* Hazard stripes, as in the app: only where something matters. */
+.rayures{height:12px;background:repeating-linear-gradient(-45deg,var(--encre) 0 12px,var(--jaune) 12px 24px)}
+
+section{padding:52px 0}
+h2{font-size:38px;margin:0 0 6px;line-height:1.05}
+.sub{color:var(--gris);margin:0 0 26px;font-size:18px}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--carte);border:1px solid var(--bord);border-radius:16px;padding:20px 20px 18px}
+.card h3{font-size:24px;margin:10px 0 6px;line-height:1.1}
+.card p{margin:0;color:#3A3527;font-size:16px}
+.tuile{width:44px;height:44px;border-radius:11px;display:grid;place-items:center}
+.tuile svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.t-jaune{background:#FFF1C2;color:var(--encre)}.t-bleu{background:#E6F1FB;color:var(--bleu)}
+.t-orange{background:#FCE9DF;color:var(--orange)}.t-vert{background:#E6F4E7;color:var(--vert)}
+
+.ecrans{display:flex;gap:16px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x mandatory}
+.ecrans figure{margin:0;flex:0 0 220px;scroll-snap-align:start}
+.ecrans img{width:220px;border-radius:20px;border:6px solid var(--encre);display:block;background:var(--encre)}
+.ecrans figcaption{font-size:15px;color:var(--gris);margin-top:8px}
+
+.etapes{counter-reset:e;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.etapes li{background:var(--carte);border:1px solid var(--bord);border-radius:16px;padding:18px 18px 16px;counter-increment:e}
+.etapes li::before{content:counter(e);display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--encre);color:var(--jaune);
+  font:700 20px "Barlow Condensed",sans-serif;margin-bottom:10px}
+.etapes b{display:block;font-size:18px;margin-bottom:4px}
+.etapes span{color:#3A3527;font-size:16px}
+
+.bande{background:var(--encre);color:#F3F0E6;border-radius:18px;padding:26px 26px 22px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.bande .tuile{width:56px;height:56px;background:var(--jaune);color:var(--encre)}
+.bande h3{font-size:28px;margin:0 0 4px;color:#fff}
+.bande p{margin:0;color:#D9D4C4}
+.bande a{color:var(--jaune)}
+
+.note{font-size:15px;color:var(--gris);margin-top:18px}
+footer{border-top:1px solid var(--bord);padding:24px 0 40px;color:var(--gris);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center}
+footer a{color:var(--gris)}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:36px}
+  h1{font-size:60px}
+  .grid,.etapes{grid-template-columns:1fr}
+  .nav a:not(.get){display:none}
+  .button{width:100%;justify-content:center}
+  .bande{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="logo.svg" alt=""><b>Jalon</b><small>by dat00u</small></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#fonctions">Fonctions</a>
+      <a href="#installer">Installer</a>
+      <a href="CHANGELOG.md">Nouveautés</a>
+      <a class="get" href="https://github.com/dat00udev-sys/jalon-distribution/releases/download/v1.1.0/Jalon-1.1.0.apk">Télécharger</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <img class="logo" src="logo.svg" alt="Logo de Jalon : un jalon rayé et son fanion">
+      <h1>Jalon</h1>
+      <p class="slogan">Chaque étape jalonnée, rien d'oublié.</p>
+      <p class="lead">L'application des artisans en électricité, plomberie et peinture : pièces, tableau, matériel, devis et suivi du chantier, avec ce qu'on oublie toujours signalé. Tout reste sur le téléphone.</p>
+      <a class="button" href="https://github.com/dat00udev-sys/jalon-distribution/releases/download/v1.1.0/Jalon-1.1.0.apk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+        Télécharger l'APK
+      </a>
+      <p class="meta">Version 1.1.0 · Android 8 et suivants · gratuite, sans compte ni publicité</p>
+    </div>
+    <div class="phone"><img src="captures/1-resume.png" alt="Le résumé d'un chantier dans Jalon : étapes, choses à faire"></div>
+  </div>
+</div>
+<div class="rayures" aria-hidden="true"></div>
+
+<section id="fonctions">
+  <div class="wrap">
+    <h2>Tout le chantier, sans rien oublier</h2>
+    <p class="sub">Chaque onglet tient sur un écran ; le détail s'ouvre d'une touche.</p>
+    <div class="grid">
+      <div class="card"><div class="tuile t-jaune"><svg viewBox="0 0 24 24"><path d="M9 3v18M9 3l10 3.5L9 10zM5 21h8"/></svg></div>
+        <h3>Travaux pièce par pièce</h3><p>À la création, une grille dit ce qui se fait dans chaque pièce : électricité, plomberie, peinture. Jalon retient vos choix pour la suite.</p></div>
+      <div class="card"><div class="tuile t-jaune"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+        <h3>Tableau NF C 15-100</h3><p>Minimums par pièce, circuits, différentiels et coffret dessiné comme au mur. Va-et-vient, télérupteurs, prises doubles et triples. Étiquettes, schéma et dossier Consuel en PDF.</p></div>
+      <div class="card"><div class="tuile t-bleu"><svg viewBox="0 0 24 24"><path d="M12 3c-3.2 4.6-6 7.9-6 11.2a6 6 0 0 0 12 0C18 10.9 15.2 7.6 12 3z"/></svg></div>
+        <h3>Plomberie</h3><p>Appareils sanitaires, tubes multicouche, PER ou cuivre, arrivée générale dimensionnée, évacuations, groupe de sécurité et raccords diélectriques.</p></div>
+      <div class="card"><div class="tuile t-orange"><svg viewBox="0 0 24 24"><path d="M4 4h14v5H4zM18 6.5h2V12h-9v3"/><path d="M10 15h2v6h-2z"/></svg></div>
+        <h3>Peinture</h3><p>Surfaces des murs et plafonds, portes et fenêtres déduites, préparation selon l'état des murs, litres de peinture avec les pertes.</p></div>
+      <div class="card"><div class="tuile t-orange"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4zM3 7v10l9 4 9-4V7M12 11v10"/></svg></div>
+        <h3>Matériel complet</h3><p>Une ligne par famille, les articles souvent oubliés signalés, le déjà acheté replié. La liste part au fournisseur, les outils à emporter sont cochés.</p></div>
+      <div class="card"><div class="tuile t-vert"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3>Devis, factures, suivi</h3><p>Un lot par métier, « Avez-vous pensé à… » avant d'émettre, signature sur le téléphone, acomptes et solde. Étapes, heures, réserves et contrôles avant réception.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ecrans" style="padding-top:0">
+  <div class="wrap">
+    <h2>À l'écran</h2>
+    <p class="sub">Une maison de démonstration, avec les trois métiers.</p>
+    <div class="ecrans">
+      <figure><img src="captures/2-pieces.png" alt="La liste des pièces" loading="lazy"><figcaption>Les pièces et leurs travaux</figcaption></figure>
+      <figure><img src="captures/3-piece.png" alt="La salle de bain côté plomberie" loading="lazy"><figcaption>Une pièce, un métier à la fois</figcaption></figure>
+      <figure><img src="captures/4-tableau.png" alt="Le tableau électrique calculé" loading="lazy"><figcaption>Le tableau, calculé et dessiné</figcaption></figure>
+      <figure><img src="captures/5-materiel.png" alt="Le matériel à acheter" loading="lazy"><figcaption>Le matériel, famille par famille</figcaption></figure>
+      <figure><img src="captures/1-resume.png" alt="Le résumé du chantier" loading="lazy"><figcaption>Ce qui reste à faire</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="installer" style="padding-top:0">
+  <div class="wrap">
+    <h2>Installer en trois gestes</h2>
+    <p class="sub">Sur un téléphone ou une tablette Android 8 ou plus récent.</p>
+    <ol class="etapes">
+      <li><b>Télécharger</b><span>Touchez « Télécharger l'APK » depuis le téléphone.</span></li>
+      <li><b>Autoriser</b><span>Si Android le demande, autorisez l'installation depuis votre navigateur.</span></li>
+      <li><b>Installer</b><span>Ouvrez le fichier, confirmez, puis créez votre premier chantier.</span></li>
+    </ol>
+    <p class="note">Pour mettre à jour, installez la nouvelle version par-dessus : vos chantiers sont gardés. Vous aviez Chantier Élec ? Jalon s'installe par-dessus et garde tout. <a href="INSTALLATION.md">Le guide complet</a>.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="bande">
+      <div class="tuile"><svg viewBox="0 0 24 24" style="width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <div>
+        <h3>Vos données restent sur le téléphone</h3>
+        <p>Jalon n'a pas accès à internet : pas de compte, pas de serveur, pas de publicité, pas de statistiques. Vos chantiers ne quittent le téléphone que si vous envoyez un PDF, une liste ou une sauvegarde. <a href="CONFIDENTIALITE.md">Politique de confidentialité</a>.</p>
+      </div>
+    </div>
+    <p class="note">Les calculs suivent la NF C 15-100 (série 2024) et le NF DTU 60.11 d'après les guides publics des fabricants, de Promotelec, de la CAPEB et du Consuel. C'est une aide : l'artisan reste seul juge de son installation.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>Jalon</b> by dat00u · version 1.1.0</span>
+    <a href="https://github.com/dat00udev-sys/jalon-distribution/releases">Toutes les versions</a>
+    <a href="CHANGELOG.md">Nouveautés</a>
+    <a href="CONFIDENTIALITE.md">Confidentialité</a>
+    <a href="https://github.com/dat00udev-sys/jalon-distribution/issues">Signaler un problème</a>
+  </div>
+</footer>
+</body>
+</html>
