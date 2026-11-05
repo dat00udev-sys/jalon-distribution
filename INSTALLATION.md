@@ -16,9 +16,15 @@ Au premier lancement, renseignez votre entreprise dans **Réglages** (nom, adres
 
 ## Mettre à jour sans perdre vos données
 
+Jalon vérifie lui-même s'il existe une nouvelle version, à chaque ouverture, et affiche un bandeau sur l'accueil. Touchez **« Mettre à jour »** : le fichier se télécharge dans le navigateur, puis Android demande l'accord pour l'installer.
+
 Installez toujours la nouvelle version **par-dessus** l'existante, sans désinstaller : les mises à jour officielles ont la même signature, et vos chantiers, clients, prix et photos sont conservés.
 
-**Vous aviez Chantier Élec ?** Jalon est la même application sous un nouveau nom : installez la 1.1.0 par-dessus, tout est gardé.
+**Vous aviez Chantier Élec, une version d'essai ?** Elle était signée avec une autre clé : Android refuse de l'écraser. Une seule fois :
+1. dans Chantier Élec, Réglages › Sécurité et sauvegarde › « Enregistrer une sauvegarde maintenant » ;
+2. désinstallez Chantier Élec ;
+3. installez Jalon ;
+4. dans Jalon, Réglages › Sécurité et sauvegarde › « Restaurer une sauvegarde », et choisissez le fichier.
 
 Pensez à faire une sauvegarde de temps en temps (Réglages › Sécurité et sauvegarde), ou à activer la sauvegarde automatique dans un dossier comme Google Drive.
 

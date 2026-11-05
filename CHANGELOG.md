@@ -18,3 +18,4 @@ Première version publiée. L'application change de nom et s'ouvre aux plombiers
 - **Autres travaux** dans chaque pièce (carrelage, placo…), sur le devis avec le nom de la pièce.
 - **Écrans courts** : chaque onglet s'ouvre sur un résumé, le détail sur sa propre page.
 - **Sécurité** : verrouillage par empreinte ou code du téléphone, sauvegarde et restauration dans un seul fichier, sauvegarde automatique chaque semaine.
+- **Mises à jour** : l'application vous prévient elle-même d'une nouvelle version, par un bandeau sur l'accueil ; elle lit pour cela un fichier signé sur sa page, sans rien envoyer.

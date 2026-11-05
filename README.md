@@ -6,7 +6,7 @@
 
 Jalon est une application Android gratuite pour les artisans en **électricité, plomberie et peinture**. Elle aide à préparer et suivre un chantier sans rien oublier : pièces, tableau électrique, matériel, devis, factures, étapes et contrôles de fin de chantier.
 
-**Tout reste sur votre téléphone.** Pas de compte, pas de serveur, pas de publicité. L'application marche sans réseau.
+**Tout reste sur votre téléphone.** Pas de compte, pas de serveur, pas de publicité. L'application marche sans réseau, et vous prévient elle-même quand une nouvelle version sort.
 
 Version disponible : **1.1.0 · Android 8 et suivants · en français**. [Télécharger l'APK signée](https://github.com/dat00udev-sys/jalon-distribution/releases/download/v1.1.0/Jalon-1.1.0.apk). Aucun compte GitHub n'est nécessaire.
 
@@ -35,13 +35,17 @@ Les règles de calcul suivent la NF C 15-100 (série 2024) et le NF DTU 60.11, d
 
 ## Vos données restent sur le téléphone
 
-L'application n'a pas l'autorisation d'accéder à internet. Vos chantiers, clients, prix et photos restent dans son espace privé. Ils ne quittent le téléphone que si vous envoyez un PDF, une liste ou une sauvegarde. Voir la [politique de confidentialité](CONFIDENTIALITE.md).
+Vos chantiers, clients, prix et photos restent dans l'espace privé de l'application. Ils ne quittent le téléphone que si vous envoyez un PDF, une liste ou une sauvegarde. La seule connexion de l'application est la lecture, à l'ouverture, du fichier `versions.json` de cette page, qui annonce les nouvelles versions : rien n'est envoyé. Voir la [politique de confidentialité](CONFIDENTIALITE.md).
 
 ## Télécharger et mettre à jour
 
-Les APK signées sont dans les [Releases](https://github.com/dat00udev-sys/jalon-distribution/releases). Pour mettre à jour, installez la nouvelle version **par-dessus** l'ancienne, sans désinstaller : vos chantiers sont conservés.
+Les APK signées sont dans les [Releases](https://github.com/dat00udev-sys/jalon-distribution/releases).
 
-Jalon s'appelait auparavant **Chantier Élec** : la version 1.1.0 s'installe par-dessus et garde tout.
+L'application vous prévient elle-même : un bandeau « Nouvelle version » apparaît sur l'accueil, avec « Mettre à jour », qui ouvre le téléchargement, et « Plus tard ». Installez la nouvelle version **par-dessus** l'ancienne, sans désinstaller : vos chantiers sont conservés. Réglages › Sécurité et sauvegarde › « Mises à jour » montre la version installée et vérifie à la demande.
+
+Le fichier d'annonce `versions.json` est signé et ne contient aucune donnée personnelle.
+
+Jalon s'appelait auparavant **Chantier Élec**, dans des versions d'essai non publiées : signées avec une autre clé, elles ne se mettent pas à jour directement. Faites une sauvegarde (Réglages › Sécurité et sauvegarde), désinstallez, installez Jalon, puis restaurez la sauvegarde.
 
 ## Besoin d'aide ?
 

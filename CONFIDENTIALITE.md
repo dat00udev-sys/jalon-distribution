@@ -6,7 +6,7 @@ Jalon (anciennement Chantier Élec) est une application pour les artisans en él
 
 ## Données collectées
 
-**Aucune.** L'application ne crée pas de compte, n'utilise aucun serveur et n'envoie rien sur internet. Elle ne contient ni publicité ni outil de mesure d'audience.
+**Aucune.** L'application ne crée pas de compte et n'envoie rien sur internet. Elle ne contient ni publicité ni outil de mesure d'audience.
 
 ## Données enregistrées sur le téléphone
 
@@ -25,7 +25,13 @@ Ces données sont supprimées si vous désinstallez l'application. La sauvegarde
 - **Liste de matériel** : uniquement quand vous l'envoyez à un fournisseur.
 - **Recherche de prix** : quand vous touchez « Chercher le prix sur internet », le nom et la référence de l'article (rien d'autre) sont envoyés au moteur de recherche de votre téléphone.
 
+## Vérification des nouvelles versions
+
+À chaque ouverture (une fois par minute au plus), l'application lit le fichier `versions.json` publié sur sa page de téléchargement, https://dat00udev-sys.github.io/jalon-distribution/versions.json, pour vous prévenir quand une nouvelle version existe. C'est une simple lecture : rien n'est envoyé, ni identifiant, ni chantier, ni client. Le fichier est signé : l'application ignore tout fichier modifié. GitHub, qui héberge la page, voit l'adresse IP du téléphone comme pour n'importe quelle page web.
+
 ## Autorisations
+
+- **Internet** : uniquement pour lire ce fichier des versions.
 
 - **Notifications** : pour le rappel, la veille au soir, des étapes prévues le lendemain. Vous pouvez le désactiver à tout moment.
 - **Appareil photo** : l'application ne demande pas cette autorisation ; elle ouvre l'application photo du téléphone quand vous prenez une photo.
